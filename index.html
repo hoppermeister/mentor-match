@@ -22,38 +22,63 @@
 		$(document).ready(function() {
 			$(".button-collapse").sideNav();
 		});
+		// controls drop-down
+		$(document).ready(function() {
+			$('select').material_select();
+		});
 	</script>
 </head>
 
 <nav>
+	<!-- side nav -->
 	<ul id="slide-out" class="side-nav">
-		<li><a href="profile.html">My Profile</a></li>
-		<li><a href="settings.html">Settings</a></li>
-		<li><a href="log_out.html">Log out</a></li>
+			<li><a href="match_search.html"><i class="large material-icons left">people</i>Find Matches</a></li>
+		<li><a href="profile.html"><i class="large material-icons left">person</i>My Profile</a></li>
+		<li><a href="settings.html"><i class="large material-icons left">settings</i>Settings</a></li>
+		<li><a href="about.html"><i class="large material-icons left">help</i>About</a></li>
+		<li><a href="log_out.html"><i class="large material-icons left">exit_to_app</i>Log out</a></li>
 	</ul>
 	<a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="large material-icons">menu</i></a>
+
+	<!-- logo -->
+	<a href="index.html" class="brand-logo center">MentorMatchr</a>
+
+	<!-- top right menu -->
+	<ul id="nav-mobile" class="right">
+		<li><a href="messages.html"><i class="large material-icons left">mail</i><span class="new badge">4</span></a></li>
+	</ul>
 </nav>
 
-some content
+<div class="container">
+	<div class="row">
+		<div class="col s12">
+			<p class="center-align">Welcome to MentorMatchr!</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s12">
+			<label>I am looking for...</label>
+			<select class="browser-default">
+    <option value="" disabled selected>Choose your option</option>
+    <option value="1">Mentors</option>
+    <option value="2">Mentees</option>
+    <option value="3">Both</option>
+  </select>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col s12">
+			<a class="waves-effect waves-light btn">Sign in</a>
+		</div>
+	</div>
+
+</div>
 
 </body>
 <footer class="page-footer">
 	<div class="container">
-		<div class="row">
-			<div class="col l6 s12">
-				<h5 class="white-text">Footer Content</h5>
-				<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-			</div>
-			<div class="col l4 offset-l2 s12">
-				<h5 class="white-text">Links</h5>
-				<ul>
-					<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-				</ul>
-			</div>
-		</div>
 	</div>
 	<div class="footer-copyright">
 		<div class="container">

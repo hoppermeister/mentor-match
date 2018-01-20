@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Log Out</title>
+	<title>Match Search</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,16 +22,21 @@
 		$(document).ready(function() {
 			$(".button-collapse").sideNav();
 		});
+		// controls drop-down
+		$(document).ready(function() {
+			$('select').material_select();
+		});
 	</script>
 </head>
 
 <nav>
 	<!-- side nav -->
 	<ul id="slide-out" class="side-nav">
+			<li><a href="match_search.html"><i class="large material-icons left">people</i>Find Matches</a></li>
 		<li><a href="profile.html"><i class="large material-icons left">person</i>My Profile</a></li>
 		<li><a href="settings.html"><i class="large material-icons left">settings</i>Settings</a></li>
 		<li><a href="about.html"><i class="large material-icons left">help</i>About</a></li>
-		<li class="active"><a href="log_out.html"><i class="large material-icons left">exit_to_app</i>Log out</a></li>
+		<li><a href="log_out.html"><i class="large material-icons left">exit_to_app</i>Log out</a></li>
 	</ul>
 	<a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="large material-icons">menu</i></a>
 
@@ -44,7 +49,26 @@
 	</ul>
 </nav>
 
-<h1>Good-bye!</h1>
+<div class="container">
+	<ul class="collection">
+    <li class="collection-item avatar">
+      <img src="images/yuna.jpg" alt="" class="circle">
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle">folder</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+
+</div>
 
 </body>
 <footer class="page-footer">
