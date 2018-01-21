@@ -15,7 +15,15 @@
 	
 	<!-- Modified CSS -->
 	<link rel="stylesheet" href="custom_styles.css" type="text/css" />
-
+	<style>
+		#main-content{
+			display: flex;
+			align-items: center;
+			justify-content:center;
+		}
+		
+	
+	</style>
 	<!-- JS includes -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -46,26 +54,91 @@
 	<a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="large material-icons">menu</i></a>
 
 	<!-- logo -->
-	<a href="index.html" class="brand-logo center">MentorMatchr</a>
+	<a href="index.html" class="brand-logo center">MentorMatch</a>
 
 	<!-- top right menu -->
-	<ul id="nav-mobile" class="right">
+	<ul id="nav-mobile" class="right" style="display:none">
 		<li><a href="messages.html"><i class="large material-icons left">mail</i><span class="new badge">4</span></a></li>
 	</ul>
 </nav>
 
-<div class="container">
-	<div class="row">
-		<div class="col s12">
-			<p class="center-align">Welcome to MentorMatchr!</p>
-		</div>
-	</div>
-		<div class="row">
-		<div class="col s12">
-	<a href="match_search.html" class="waves-effect waves-light btn">Get Started</a>
-		</div>
-	</div>
+<div class="container" style="min-height:80vh" id="main-content"> 
 
+	<div class="row" id="createProfile">
+		<div class="col s12">
+			<div class="card">
+				<div class="card-image">
+					<img src="https://robohash.org/magic.png?bgset=bg1">
+					<span class="card-title"> <input type="text" id="usernameInput" style="border-bottom: 0; margin: 0;" placeholder="My Name"></span>
+				</div>
+				<div class="card-content">
+					<div class="row">
+						<div class="col s12">
+							<h5>Bio</h5>
+							<p><textarea id="userBio" class="materialize-textarea"></textarea></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s6">
+							<h5>I wish to learn</h5>
+							<div >
+							<div id="thingsToLearn" class="chips chips-autocomplete"></div>
+							</div>
+						</div>
+						<div class="col s6">
+							<h5>I can teach</h5>
+							<div >
+							<div id="thingsToTeach" class="chips chips-autocomplete"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Yes/No buttons -->
+				<div class="fixed-action-btn-right">
+					<a class="btn-floating btn-large red" id="saveProfileButton"><i class="large material-icons">check</i></a>
+				</div>				
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="row" id="matchFinders" style="display:none">
+		No users match your search. 
+	</div>
+	
+	<div class="row" id="myMatches" style="display:none">
+	
+		<div class="flex-item col s12">
+				Mentors:
+				<div id="myMentors">
+				
+				</div>
+				Mentees:
+				<div id="myMentees">
+				
+				</div>
+			</div>	
+		</div>
+	</div>
+	</div>
+	
+	
+</div>
+	<!--
+	<div class="row">
+		<div class="flex-item col s12">
+			I wish to:
+			<div  class="col s12" style="outline: black solid thin;margin-bottom: 3%; line-height: 50px">
+					be mentored
+				</div>
+				
+				<div class="col s12" style="outline: black solid thin; line-height: 50px">
+					mentor someone
+				</div>
+					
+			</div>	
+		</div>
+	</div> -->
 <!-- Removed for demo
 	<div class="row">
 		<div class="col s12">
@@ -95,9 +168,266 @@
 	<div class="footer-copyright">
 		<div class="container">
 			© 2018 Copyright Text
-			<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+			<!--Add Github<a class="grey-text text-lighten-4 right" href="#!">More Links</a> -->
 		</div>
 	</div>
 </footer>
+<script>
+	
+	var newUserId;
+	var newUser = {};
+	var users = [];
+	
+	var userInterests = [];
+	var userExperiences = [];
+	var categoryData = [{
+		  tag: 'studying abroad',
+		  id: 0,
+		}, {
+		  tag: 'time travel',
+		  id: 1,
+		},{
+		  tag: 'greek life',
+		  id: 2,
+		},{
+		  tag: 'agile developments',
+		  id: 3,
+		},{
+		  tag: 'learning languages',
+		  id: 4,
+		},{
+		  tag: 'game dev',
+		  id: 5,
+		},{
+		  tag: 'kotlin',
+		  id: 6,
+		},{
+		  tag: 'competitive programming',
+		  id: 7,
+		}];
+	
+	
+	$(document).ready(function(){
+	  $('.chips').material_chip();
+	  $('.chips-initial').material_chip({
+		data: [{
+		  tag: 'studying abroad',
+		  id: 0,
+		}, {
+		  tag: 'time travel',
+		  id: 1,
+		},{
+		  tag: 'greek life',
+		  id: 2,
+		},{
+		  tag: 'agile',
+		  id: 3,
+		},{
+		  tag: 'learning languages',
+		  id: 4,
+		},{
+		  tag: 'game dev',
+		  id: 5,
+		},{
+		  tag: 'kotlin',
+		  id: 6,
+		},{
+		  tag: 'competitive programming',
+		  id: 7,
+		}],
+	  });
+	  $('.chips-placeholder').material_chip({
+		placeholder: 'Enter a skill',
+		secondaryPlaceholder: '+Tag',
+	  });
+	  $('.chips-autocomplete').material_chip({
+		autocompleteOptions: {
+		  data: 
+		  {
+			'studying abroad': null,
+			'time travel': null,
+			'greek life': null,
+			'agile development': null,
+			'learning languages': null,
+			'game dev': null,
+			'kotlin': null,
+			'competitive programming' : null
+		  },
+		  limit: Infinity,
+		  minLength: 1
+		}
+	  });
+	  
+	  
+	  $('#thingsToLearn').on('chip.add', function(e, chip){
+		
+		for(item in categoryData){
+			if(categoryData[item].tag == chip.tag)
+				userInterests.push(categoryData[item].id);
+		}
+		
+	  });
 
+	  $('#thingsToLearn').on('chip.delete', function(e, chip){
+	  for(item in categoryData){
+			if(categoryData[item].tag == chip.tag)
+				userInterests.splice(userInterests.indexOf(categoryData[item].id),1);
+		}
+		
+		
+	  });
+	  
+	  $('#thingsToTeach').on('chip.add', function(e, chip){
+		for(item in categoryData){
+			if(categoryData[item].tag == chip.tag)
+				userExperiences.push(categoryData[item].id);
+		}
+		
+		
+	  });
+
+	  $('#thingsToTeach').on('chip.delete', function(e, chip){
+		for(item in categoryData){
+			if(categoryData[item].tag == chip.tag)
+				userExperiences.splice(userInterests.indexOf(categoryData[item].id),1);
+		}
+		
+	  
+		
+	  });
+	  
+	  });
+	  
+	  $("#saveProfileButton").click(function(){
+		
+		newUser.name = $("#usernameInput").val();
+		newUser.bio = $("#userBio").val();
+		newUser.interests = userInterests;
+		newUser.experiences = userExperiences;
+		
+		$.ajax({
+    type: 'POST',
+    url: '/api/addUser',
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    data: JSON.stringify(newUser),
+	success: function(data){
+		users = data;
+		newUserId = users.length - 1;
+		$("#createProfile").css("display", "none");
+		$("#matchFinders").css("display", "block");
+		popNextUser();
+	}
+});
+	
+	  });
+	 
+	function accept(mentorId, mentorName){
+	
+		$.get("/api/matchMentor", {"mentor": mentorId, "mentee": newUserId, "category": "lol"}); 
+		$("#matchFinders").html('');
+		$("#myMentors").append('<div class="col s12" style="outline: black solid thin; line-height: 50px">' + mentorName + '<!--LOLCHEAT--></div>');
+					
+		
+		popNextUser();
+	}
+	
+	function reject(mentorId){
+		$("#matchFinders").html('');
+		popNextUser();
+		}
+		
+	function popNextUser() { 
+		if(users.length == 0){ 
+			if(!$("#myMatches").html().includes("<div"))
+				$("#matchFinders").html('No more results'); 
+			else{
+				$("#matchFinders").css("display", "none");
+				$("#myMatches").css("display", "block");
+				}
+			return;
+		}
+		
+		
+		
+		
+		var possible = users.pop();
+		valid = false;
+		console.log(possible);
+		for(interest in newUser.interests){
+			for(skill in possible.experiences){
+				console.log(interest +  " " + skill);
+				if( newUser.interests[interest] == possible.experiences[skill])
+					valid = true;
+
+			}
+		}
+		
+		if(valid){
+			bio = possible.bio;
+			name = possible.name;
+			learn  = "";
+			for(learnable in possible.interests)
+			{
+				learn += categoryData[learnable].tag + "<br>";
+			}
+			
+			teach = "";
+			for(teachable in possible.experiences)
+			{
+				teach += categoryData[teachable].tag + "<br>";
+			}
+			
+			id = possible.id;
+			console.log(name);
+			const Item = ({ bio2 = bio, name2 = name, learn2 = learn, teach2 = teach, id2 = id }) =>  `<div class="col s12">
+			<div class="card">
+				<div class="card-image">
+					<img src="https://robohash.org/${name2}.png?bgset=bg1">
+					<span class="card-title">${name2}</span>
+				</div>
+				<div class="card-content">
+					<div class="row">
+						<div class="col s12">
+							<h5>Bio</h5>
+							<p>${bio2}</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col s6">
+							<h5>I wish to learn</h5>
+							<div >
+							${learn2}
+							</div>
+						</div>
+						<div class="col s6">
+							<h5>I can teach</h5>
+							<div >
+							${teach2}
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Yes/No buttons -->
+				<div class="fixed-action-btn-right">
+					<a class="btn-floating btn-large red" id="acceptMatchButton" onclick="accept(${id2}, '${name2}')">><i class="large material-icons">check</i></a>
+				</div>	
+				<div class="fixed-action-btn-left">
+				<a class="btn-floating btn-large red" id="rejectMatchButton" onclick="reject(${id2})"><i class="large material-icons">close</i></a>
+			</div>				
+				
+			</div>
+		</div>`;
+		
+			$("#matchFinders").html(Item);	
+			learn = "";
+			teach = "";
+			return;
+		}
+		
+		popNextUser();
+	}
+	
+	
+</script>
 </html>

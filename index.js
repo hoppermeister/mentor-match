@@ -1,9 +1,15 @@
 var express = require('express');
-var app = express();
+var util = require('util');
+var bodyParser = require('body-parser');
 
+var app = express();
+app.use(bodyParser.urlencoded({extended:true }));
+app.use(bodyParser.json());
 //set static folder + contents
 app.use(express.static("static"));
 app.use("/mentormatch.css", express.static(__dirname + "/mentormatch.css"));
+
+app.use("/mentormatch.css", express.static(__dirname + "/custom_styles.css"));
 
 //Set the port (environment variable, or 5000 default)
 app.set('port', (process.env.PORT || 5000));
@@ -36,6 +42,7 @@ app.get('/api/matchMentor', function(request, response){
 	
 	var matchIndex = matches.push({"mentor": mentor, "mentee": mentee, "messages": [], "category": category});
 	console.log(mentee);
+	console.log(JSON.stringify(users));
 	users[mentee].matches.push(matchIndex);
 	users[mentor].matches.push(matchIndex);
 	response.json({"error": false});
@@ -52,6 +59,17 @@ app.get('/api/getMentorsByCategory', function(request, response) {
 	}
 });
 
+app.post('/api/addUser', function(request, response) {
+	console.log(request.body);
+	var newUser = request.body;
+	newUser.id = users.length;
+	newUser.is_mentor = true;
+	newUser.matches = []; 
+	users.push(newUser);
+	
+	response.json(users);
+});
+
 var users = [
 	{
 		"id": 0,
@@ -60,7 +78,7 @@ var users = [
 		"bio": "I'm very interested in world cultures, and have studied abroad numerous times!",
 		"is_mentor": true,
 		"matches": [],
-		"experiences": [0]
+		"experiences": [0, 1]
 	},
 		{
 		"id": 1,
@@ -82,12 +100,12 @@ var users = [
 	},
 		{
 		"id": 3,
-		"name": "", 
+		"name": "Greger", 
 		"interests": [],
-		"bio": "",
+		"bio": "Who dares!?",
 		"is_mentor": true,
 		"matches": [],
-		"experiences": []
+		"experiences": [1, 7, 3]
 	}
  ];
 
@@ -101,7 +119,7 @@ var users = [
  
  var messages = [
 	{
-		"time": "",
+		"time": "4:19PM",
 		"string": "Hi, how are you?",
 		"by": 1,
 		"to": 0
@@ -119,19 +137,35 @@ var categories = [
 		"mentors": [0],
 		"mentees": []
 	},
-		{
-		"name": "Greek life",
+	{
+		"name": "greek life",
 		"mentors": [0],
 		"mentees": []
 	},
-			{
-		"name": "coding",
+	{
+		"name": "agile development",
 		"mentors": [0],
 		"mentees": []
 	},
-			{
+	{
 		"name": "learning languages",
 		"mentors": [0],
 		"mentees": []
 	},
+	{
+		"name": "game dev",
+		"mentors": [0],
+		"mentees": []
+	},
+	{
+		"name": "kotlin",
+		"mentors": [0],
+		"mentees": []
+	},
+	{
+		"name": "competitive programming",
+		"mentors": [0],
+		"mentees": []
+	}
+
 ];
