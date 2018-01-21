@@ -3,6 +3,7 @@
 
 <head>
 	<title>My Settings</title>
+	<link rel="stylesheet" href="background.css">
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,9 @@
 	<!-- Materialize CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- Modified CSS -->
+	<link rel="stylesheet" href="custom_styles.css" type="text/css" />
 
 	<!-- JS includes -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -44,15 +48,68 @@
 	</ul>
 </nav>
 
-<h1>Settings</h1>
+<div class="container">
+	<h1>Settings</h1>
+
+	<div class="row">
+		<form class="col s12">
+			<div class="row">
+				<div class="input-field col s6">
+					<input id="first_name" type="text" class="validate">
+					<label for="first_name">First Name</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="class_year" type="text" class="validate">
+					<label for="class_year">Graduation Year</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<textarea id="bio_field" class="materialize-textarea" data-length="144"></textarea>
+					<label for="bio_field">Short Bio</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<select multiple>
+      				<option value="" disabled selected>Choose your interests</option>
+      				<option value="1">Option 1</option>
+     				 <option value="2">Option 2</option>
+     				 <option value="3">Option 3</option>
+   					 </select>
+					<label for="interests">Interests (what you would like to be mentored for)</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="input-field col s12">
+					<select multiple>
+      				<option value="" disabled selected>Choose your skills and experience</option>
+      				<option value="1">Option 1</option>
+     				 <option value="2">Option 2</option>
+     				 <option value="3">Option 3</option>
+   					 </select>
+					<label for="interests">Skills and Experience (what you would like to mentor for)</label>
+				</div>
+			</div>
+	</div>
+</div>
+</form>
+</div>
+</div>
+
 
 </body>
 <footer class="page-footer">
+	<script>
+		$(document).ready(function() {
+			$('select').material_select();
+		});
+	</script>
 	<div class="container">
 	</div>
 	<div class="footer-copyright">
 		<div class="container">
-			© 2014 Copyright Text
+			© 2018 Copyright Text
 			<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
 		</div>
 	</div>

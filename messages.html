@@ -3,7 +3,8 @@
 
 <head>
 	<title>My Messages</title>
-
+	<link rel="stylesheet" href="background.css">
+	
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="A mentor and mentee matching site">
@@ -13,6 +14,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+	<!-- Modified CSS -->
+	<link rel="stylesheet" href="custom_styles.css" type="text/css" />
+	
 	<!-- JS includes -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -30,7 +34,7 @@
 	<ul id="slide-out" class="side-nav">
 		<li><a href="profile.html"><i class="large material-icons">person</i>My Profile</a></li>
 		<li><a href="settings.html"><i class="large material-icons">settings</i>Settings</a></li>
-		<li><a href="#"><i class="large material-icons">help</i>About</a></li>
+		<li><a href="about.html"><i class="large material-icons">help</i>About</a></li>
 		<li><a href="log_out.html"><i class="large material-icons">exit_to_app</i>Log out</a></li>
 	</ul>
 	<a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="large material-icons">menu</i></a>
@@ -40,12 +44,29 @@
 
 	<!-- top right menu -->
 	<ul id="nav-mobile" class="right">
-		<li><a href="messages.html">Messages</a></li>
+		<li><a href="messages.html"><i class="large material-icons left">mail</i><span class="new badge">4</span></a></li>
 	</ul>
-
 </nav>
 
-<h1>messages</h1>
+<div class="container">
+	<ul class="collection">
+    <li class="collection-item avatar">
+      <img src="images/yuna.jpg" alt="" class="circle">
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+    <li class="collection-item avatar">
+      <i class="material-icons circle">folder</i>
+      <span class="title">Title</span>
+      <p>First Line <br>
+         Second Line
+      </p>
+      <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+    </li>
+</div>
 
 </body>
 <footer class="page-footer">
@@ -53,7 +74,7 @@
 	</div>
 	<div class="footer-copyright">
 		<div class="container">
-			© 2014 Copyright Text
+			© 2018 Copyright Text
 			<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
 		</div>
 	</div>

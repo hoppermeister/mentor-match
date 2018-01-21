@@ -3,7 +3,7 @@
 
 <head>
 	<title>My Profile</title>
-
+	<link rel="stylesheet" href="background.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="A mentor and mentee matching site">
@@ -13,6 +13,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" type="text/css" />
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+	<!-- Modified CSS -->
+	<link rel="stylesheet" href="custom_styles.css" type="text/css" />
+	
 	<!-- JS includes -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
@@ -28,6 +31,7 @@
 <nav>
 	<!-- side nav -->
 	<ul id="slide-out" class="side-nav">
+		<li><a href="match_search.html"><i class="large material-icons left">people</i>Find Matches</a></li>
 		<li class="active"><a href="profile.html"><i class="large material-icons left">person</i>My Profile</a></li>
 		<li><a href="settings.html"><i class="large material-icons left">settings</i>Settings</a></li>
 		<li><a href="about.html"><i class="large material-icons left">help</i>About</a></li>
@@ -46,42 +50,47 @@
 
 <!-- PROFILE CARD -->
 
+<div class="container center-align">
 <div class="row">
-	<div class="col s12 m6">
+	<div class="col s12">
 		<div class="card">
 			<div class="card-image">
-				<img src="https://robohash.org/YOUR-TEXT.png">
+				<img src="https://robohash.org/YOUR-TEXT.png?bgset=bg1">
 				<span class="card-title">My Profile</span>
 			</div>
 
 			<div class="card-content">
 				<div class="row">
 					<div class="col s12">
+						<h5>Bio</h5>
 						<p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col s6">
-						<h6>Interests</h6>
+						<h5>Interests</h5>
 					</div>
 					<div class="col s6">
-						<h6>Skills and Expertise</h6>
+						<h5>Skills and Expertise</h5>
 					</div>
 				</div>
 			</div>
 
-			<div class="card-action">
-				<a href="#">Link 1</a>
-			<div class="fixed-action-btn">
-				<a class="btn-floating btn-large red">
-					<i class="large material-icons">check</i>
-				</a>
+				<!-- Yes/No buttons -->
+			<div class="fixed-action-btn-right">
+				<a class="btn-floating btn-large red"><i class="large material-icons">check</i></a>
 			</div>
-				<a class="btn left waves-effect waves-light red"><i class="material-icons">close</i></a>
+			<div class="fixed-action-btn-left">
+				<a class="btn-floating btn-large red"><i class="large material-icons">close</i></a>
+			</div>
+			
+			
 			</div>
 		</div>
 	</div>
 </div>
+</div>
+
 
 </body>
 <footer class="page-footer">
@@ -89,7 +98,7 @@
 	</div>
 	<div class="footer-copyright">
 		<div class="container">
-			© 2014 Copyright Text
+			© 2018 Copyright Text
 			<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
 		</div>
 	</div>
