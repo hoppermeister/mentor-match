@@ -45,11 +45,11 @@
 <nav>
 	<!-- side nav -->
 	<ul id="slide-out" class="side-nav">
-			<li><a href="match_search.html"><i class="large material-icons left">people</i>Find Matches</a></li>
-		<li><a href="profile.html"><i class="large material-icons left">person</i>My Profile</a></li>
-		<li><a href="settings.html"><i class="large material-icons left">settings</i>Settings</a></li>
-		<li><a href="about.html"><i class="large material-icons left">help</i>About</a></li>
-		<li><a href="log_out.html"><i class="large material-icons left">exit_to_app</i>Log out</a></li>
+		<li><a href="#" onClick="resetUsers()"><i class="large material-icons left">people</i>Find Matches</a></li>
+		<li><a href="#"><i class="large material-icons left">person</i>My Profile</a></li>
+		<li><a href="#"><i class="large material-icons left">settings</i>Settings</a></li>
+		<li><a href="#"><i class="large material-icons left">help</i>About</a></li>
+		<li><a href="/"><i class="large material-icons left">exit_to_app</i>Log out</a></li>
 	</ul>
 	<a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="large material-icons">menu</i></a>
 
@@ -336,6 +336,18 @@
 		$("#matchFinders").html('');
 		popNextUser();
 		}
+		
+	function resetUsers(){
+		$.get("/api/getUsers", function(data){
+			users = data;
+			$("#matchFinders").css("display", "block");
+			$("#myMatches").css("display", "none");
+			$("#createProfile").css("display", "none");
+			$("#myMentors").html('');
+			$("myMentees").html('');
+			popNextUser();
+			});
+	}
 		
 	function popNextUser() { 
 		if(users.length == 0){ 
