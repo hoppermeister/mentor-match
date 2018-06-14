@@ -7,9 +7,9 @@ app.use(bodyParser.urlencoded({extended:true }));
 app.use(bodyParser.json());
 //set static folder + contents
 app.use(express.static("static"));
-app.use("/mentormatch.css", express.static(__dirname + "/mentormatch.css"));
+app.use("/background.css", express.static(__dirname + "/background.css"));
 
-app.use("/mentormatch.css", express.static(__dirname + "/custom_styles.css"));
+app.use("/custom_styles.css", express.static(__dirname + "/custom_styles.css"));
 
 //Set the port (environment variable, or 5000 default)
 app.set('port', (process.env.PORT || 5000));
@@ -18,6 +18,8 @@ app.set('port', (process.env.PORT || 5000));
 app.get('/', function(req, res) {
 	res.sendfile('index.html');
 });
+
+
 
 app.get('/api/call', function(request, response) {
 	response.json({"key": "value"});
@@ -34,6 +36,14 @@ app.get('/api/call', function(request, response) {
 app.get('/api/getUsers', function(request, response) {
 	response.json(users);
 });
+
+app.get('/about', function(req, res) {
+    res.sendfile('about.html');
+})
+
+app.get('/settings', function(req, res) {
+    res.sendfile('settings.html');
+})
 
 app.get('/api/matchMentor', function(request, response){
 	var mentee = request.query.mentee;
